@@ -5,6 +5,11 @@ import com.nahian.github.io.rookiedev.Models.User;
 import java.util.List;
 
 public interface UserService {
-    public List<User> getUsers();
-    public User createUser(User user);
+    List<User> getUsers();
+
+    User createUser(User user);
+
+    User deleteUser(User user);
+
+    User findUser(Long id);
 }
