@@ -20,6 +20,6 @@ public class User {
     private String name;
     private String address;
     private String email;
-    private Integer mobile;
+    private String mobile;
 
 }

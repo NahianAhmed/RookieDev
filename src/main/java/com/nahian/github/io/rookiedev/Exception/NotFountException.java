@@ -8,6 +8,7 @@ public class NotFountException extends RuntimeException {
     public NotFountException() {
         super("NOT FOUND");
     }
+
     public NotFountException(String ex) {
         super(ex);
     }
