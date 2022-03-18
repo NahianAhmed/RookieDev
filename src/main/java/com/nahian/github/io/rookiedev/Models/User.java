@@ -1,9 +1,9 @@
 package com.nahian.github.io.rookiedev.Models;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 
 import javax.persistence.*;
-
 
 @Getter
 @Setter
@@ -12,6 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "user")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,6 +20,6 @@ public class User {
     private String name;
     private String address;
     private String email;
-    private Integer mobile;
+    private String mobile;
 
 }
