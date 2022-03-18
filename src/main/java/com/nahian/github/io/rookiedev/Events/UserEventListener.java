@@ -6,7 +6,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.EventListener;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
+
+import javax.transaction.Transactional;
 
 
 @Component
@@ -15,6 +18,8 @@ import org.springframework.stereotype.Component;
 public class UserEventListener  {
     private final UserService userService;
 
+    @Async
+    @Transactional
     @EventListener
     public void handleUserDeleteEvent(UserDeleteEvent event) {
         User user = event.getUser();

@@ -5,7 +5,6 @@ import com.nahian.github.io.rookiedev.Models.User;
 import com.nahian.github.io.rookiedev.Repositorys.UserRepository;
 import com.nahian.github.io.rookiedev.Services.UserService;
 import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,17 +28,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User deleteUser(User user) {
-        User u = userRepository.findById(user.getId()).orElse(null);
-        if (u!=null) {
-            userRepository.delete(u);
-        }
-       return u;
+        User u = userRepository.findById(user.getId()).orElseThrow(NotFountException::new);
+        userRepository.delete(u);
+        return u;
     }
 
-    @SneakyThrows
     @Override
-    public User findUser(Long id)  {
-        User user = userRepository.findById(id).orElseThrow(NotFountException::new);
-        return user;
+    public User findUser(Long id) {
+        return userRepository.findById(id).orElseThrow(NotFountException::new);
     }
 }
