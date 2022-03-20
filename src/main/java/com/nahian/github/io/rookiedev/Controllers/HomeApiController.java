@@ -28,6 +28,10 @@ public class HomeApiController {
     public List<User> getAllUser() {
         return userService.getUsers();
     }
+    @GetMapping("/user/{userId}")
+    public User getUser(@PathVariable Long userId) {
+        return userService.findUser(userId);
+    }
 
     @PostMapping("/create")
     public List<User> createUser(@RequestBody User user, BindingResult result) {
@@ -38,10 +42,19 @@ public class HomeApiController {
         userService.createUser(user);
         return userService.getUsers();
     }
+    @PostMapping("/update")
+    public User updateUser(@RequestBody User user, BindingResult result) {
+        userValidator.validate(user, result);
+        if (result.hasErrors()) {
+            throw new UserException(Objects.requireNonNull(result.getFieldError()));
+        }
+        return userService.updateUser(user);
+    }
 
-    @GetMapping("/delete/{id}")
-    public List<User> deleteUser(@PathVariable Long id) {
-        User user = userService.findUser(id);
+
+    @GetMapping("/delete/{userId}")
+    public List<User> deleteUser(@PathVariable Long userId) {
+        User user = userService.findUser(userId);
         publisher.publishEvent(new UserDeleteEvent(this, user));
         return userService.getUsers();
     }
