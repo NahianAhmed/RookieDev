@@ -1,4 +1,4 @@
-package com.nahian.github.io.rookiedev.Objects;
+package com.nahian.github.io.rookiedev.objects;
 
 import lombok.*;
 import org.springframework.http.HttpStatus;

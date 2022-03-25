@@ -1,6 +1,6 @@
-package com.nahian.github.io.rookiedev.Services;
+package com.nahian.github.io.rookiedev.services;
 
-import com.nahian.github.io.rookiedev.Models.User;
+import com.nahian.github.io.rookiedev.models.User;
 
 import java.util.List;
 

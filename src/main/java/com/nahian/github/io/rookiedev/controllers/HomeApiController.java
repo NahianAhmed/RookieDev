@@ -1,10 +1,10 @@
-package com.nahian.github.io.rookiedev.Controllers;
+package com.nahian.github.io.rookiedev.controllers;
 
-import com.nahian.github.io.rookiedev.Events.UserDeleteEvent;
-import com.nahian.github.io.rookiedev.Exception.UserException;
-import com.nahian.github.io.rookiedev.Models.User;
-import com.nahian.github.io.rookiedev.Services.UserService;
-import com.nahian.github.io.rookiedev.Validators.UserValidator;
+import com.nahian.github.io.rookiedev.events.UserDeleteEvent;
+import com.nahian.github.io.rookiedev.exception.UserException;
+import com.nahian.github.io.rookiedev.models.User;
+import com.nahian.github.io.rookiedev.services.UserService;
+import com.nahian.github.io.rookiedev.validators.UserValidator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;

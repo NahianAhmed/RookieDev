@@ -1,7 +1,7 @@
-package com.nahian.github.io.rookiedev.Events;
+package com.nahian.github.io.rookiedev.events;
 
-import com.nahian.github.io.rookiedev.Models.User;
-import com.nahian.github.io.rookiedev.Services.UserService;
+import com.nahian.github.io.rookiedev.models.User;
+import com.nahian.github.io.rookiedev.services.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;

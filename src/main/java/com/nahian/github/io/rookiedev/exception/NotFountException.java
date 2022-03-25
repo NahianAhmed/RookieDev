@@ -1,4 +1,4 @@
-package com.nahian.github.io.rookiedev.Exception;
+package com.nahian.github.io.rookiedev.exception;
 
 
 public class NotFountException extends RuntimeException {
