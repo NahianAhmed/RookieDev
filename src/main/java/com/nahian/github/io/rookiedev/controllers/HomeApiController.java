@@ -59,4 +59,9 @@ public class HomeApiController {
         return userService.getUsers();
     }
 
+    @GetMapping("/users/{term}")
+    public List<User> getUserWithAddress(@PathVariable String term) {
+        return userService.findUserWithAddress(term);
+    }
+
 }

@@ -48,4 +48,9 @@ public class UserServiceImpl implements UserService {
     public User findUser(Long id) {
         return userRepository.findById(id).orElseThrow(NotFountException::new);
     }
+
+    @Override
+    public List<User> findUserWithAddress(String address) {
+        return userRepository.findUserWithAddress(address);
+    }
 }
