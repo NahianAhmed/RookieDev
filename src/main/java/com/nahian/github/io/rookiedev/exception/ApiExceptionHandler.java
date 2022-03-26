@@ -1,6 +1,6 @@
-package com.nahian.github.io.rookiedev.Exception;
+package com.nahian.github.io.rookiedev.exception;
 
-import com.nahian.github.io.rookiedev.Objects.ApiError;
+import com.nahian.github.io.rookiedev.objects.ApiError;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

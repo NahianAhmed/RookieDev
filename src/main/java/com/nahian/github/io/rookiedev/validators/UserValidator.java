@@ -1,6 +1,6 @@
-package com.nahian.github.io.rookiedev.Validators;
+package com.nahian.github.io.rookiedev.validators;
 
-import com.nahian.github.io.rookiedev.Models.User;
+import com.nahian.github.io.rookiedev.models.User;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;

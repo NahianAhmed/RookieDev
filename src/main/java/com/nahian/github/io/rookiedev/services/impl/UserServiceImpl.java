@@ -1,9 +1,9 @@
-package com.nahian.github.io.rookiedev.Services.impl;
+package com.nahian.github.io.rookiedev.services.impl;
 
-import com.nahian.github.io.rookiedev.Exception.NotFountException;
-import com.nahian.github.io.rookiedev.Models.User;
-import com.nahian.github.io.rookiedev.Repositorys.UserRepository;
-import com.nahian.github.io.rookiedev.Services.UserService;
+import com.nahian.github.io.rookiedev.exception.NotFountException;
+import com.nahian.github.io.rookiedev.models.User;
+import com.nahian.github.io.rookiedev.repositorys.UserRepository;
+import com.nahian.github.io.rookiedev.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
@@ -47,5 +47,10 @@ public class UserServiceImpl implements UserService {
     @Cacheable(value = "user", key = "#id")
     public User findUser(Long id) {
         return userRepository.findById(id).orElseThrow(NotFountException::new);
+    }
+
+    @Override
+    public List<User> findUserWithAddress(String address) {
+        return userRepository.findUserWithAddress(address);
     }
 }

@@ -1,4 +1,4 @@
-package com.nahian.github.io.rookiedev.Models;
+package com.nahian.github.io.rookiedev.models;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
