@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Getter
 @Setter
@@ -13,7 +14,9 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Table(name = "user")
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class User {
+public class User implements Serializable {
+
+    private static final long serialVersionUID = -9077082267200414421L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
