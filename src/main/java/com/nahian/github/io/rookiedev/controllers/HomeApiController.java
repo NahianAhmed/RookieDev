@@ -51,7 +51,6 @@ public class HomeApiController {
         return userService.updateUser(user);
     }
 
-
     @GetMapping("/delete/{userId}")
     public List<User> deleteUser(@PathVariable Long userId) {
         User user = userService.findUser(userId);

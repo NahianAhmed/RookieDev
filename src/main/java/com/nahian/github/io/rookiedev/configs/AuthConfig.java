@@ -39,24 +39,17 @@ public class AuthConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//        http.csrf().disable()
-//                .authorizeRequests()
-//                .antMatchers("/get-token").permitAll()
-//                .anyRequest()
-//                .authenticated()
-//                .and()
-//                .exceptionHandling()
-//                .and()
-//                .sessionManagement()
-//                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-//        http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
-//    }
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable().authorizeRequests().antMatchers("/get-token")
-                .permitAll().anyRequest().authenticated()
-                .and().exceptionHandling().and().sessionManagement()
+        http.csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/get-token").permitAll()
+                .anyRequest()
+                .authenticated()
+                .and()
+                .exceptionHandling()
+                .and()
+                .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);;
+        http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
     }
 }
