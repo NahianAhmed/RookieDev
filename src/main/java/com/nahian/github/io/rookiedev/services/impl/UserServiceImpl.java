@@ -5,6 +5,7 @@ import com.nahian.github.io.rookiedev.models.User;
 import com.nahian.github.io.rookiedev.repositorys.UserRepository;
 import com.nahian.github.io.rookiedev.services.UserService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Log4j2
 @Service
 @RequiredArgsConstructor(onConstructor_ = @Autowired)
 public class UserServiceImpl implements UserService {
@@ -46,6 +48,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @Cacheable(value = "user", key = "#id")
     public User findUser(Long id) {
+        log.info("getting user "+id);
         return userRepository.findById(id).orElseThrow(NotFountException::new);
     }
 
