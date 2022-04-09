@@ -28,6 +28,7 @@ public class HomeApiController {
     public List<User> getAllUser() {
         return userService.getUsers();
     }
+
     @GetMapping("/user/{userId}")
     public User getUser(@PathVariable Long userId) {
         return userService.findUser(userId);
@@ -42,6 +43,7 @@ public class HomeApiController {
         userService.createUser(user);
         return userService.getUsers();
     }
+
     @PostMapping("/update")
     public User updateUser(@RequestBody User user, BindingResult result) {
         userValidator.validate(user, result);
@@ -50,7 +52,6 @@ public class HomeApiController {
         }
         return userService.updateUser(user);
     }
-
 
     @GetMapping("/delete/{userId}")
     public List<User> deleteUser(@PathVariable Long userId) {
