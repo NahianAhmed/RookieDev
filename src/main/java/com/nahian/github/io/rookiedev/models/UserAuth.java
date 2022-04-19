@@ -4,6 +4,7 @@ package com.nahian.github.io.rookiedev.models;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Getter
 @Setter
@@ -12,7 +13,9 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Entity
 @Table
-public class UserAuth {
+public class UserAuth implements Serializable {
+    private static final long serialVersionUID = -4416976668897114526L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
