@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,10 +20,12 @@ import java.util.Objects;
 @Log4j2
 @RequiredArgsConstructor(onConstructor_ = @Autowired)
 public class HomeApiController {
+    private static final String KAFKA_TOPIC = "rookiedev";
 
     private final UserService userService;
     private final ApplicationEventPublisher publisher;
     private final UserValidator userValidator;
+    private final KafkaTemplate<String, Object> template;
 
     @GetMapping("/users")
     public List<User> getAllUser() {
@@ -41,6 +44,7 @@ public class HomeApiController {
             throw new UserException(Objects.requireNonNull(result.getFieldError()));
         }
         userService.createUser(user);
+        template.send(KAFKA_TOPIC, user);
         return userService.getUsers();
     }
 
