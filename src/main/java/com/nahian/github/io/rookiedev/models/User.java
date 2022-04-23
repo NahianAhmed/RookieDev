@@ -10,6 +10,7 @@ import java.io.Serializable;
 @Setter
 @Builder
 @Entity
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "user")

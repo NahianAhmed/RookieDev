@@ -1,5 +1,6 @@
-package com.nahian.github.io.rookiedev.events;
+package com.nahian.github.io.rookiedev.listener;
 
+import com.nahian.github.io.rookiedev.events.UserDeleteEvent;
 import com.nahian.github.io.rookiedev.models.User;
 import com.nahian.github.io.rookiedev.services.UserService;
 import lombok.RequiredArgsConstructor;

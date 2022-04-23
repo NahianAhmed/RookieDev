@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 public class KafkaController {
     private final KafkaTemplate<String, Object> template;
 
-    private static final String KAFKA_TOPIC = "rookiedev";
+    private static final String KAFKA_TOPIC = "user";
 
     @GetMapping("/kafka/produce/{text}")
     public String produceInKafka(@PathVariable String text) {

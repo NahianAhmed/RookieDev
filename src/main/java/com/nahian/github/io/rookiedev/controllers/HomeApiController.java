@@ -20,7 +20,7 @@ import java.util.Objects;
 @Log4j2
 @RequiredArgsConstructor(onConstructor_ = @Autowired)
 public class HomeApiController {
-    private static final String KAFKA_TOPIC = "rookiedev";
+    private static final String KAFKA_TOPIC = "user";
 
     private final UserService userService;
     private final ApplicationEventPublisher publisher;
