@@ -11,7 +11,7 @@
     <groupId>com.nahian.github.io</groupId>
     <artifactId>RookieDev</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>RookieDev</name>
     <description>RookieDev</description>
     <properties>
@@ -53,11 +53,6 @@
             <version>3.12.0</version>
         </dependency>
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.13.2.2</version>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-batch</artifactId>
         </dependency>
@@ -88,10 +83,9 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.11.3</version>
+            <version>2.13.3</version>
         </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
@@ -110,8 +104,12 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.6.4</version>
+            </plugin>
         </plugins>
         <finalName>rookie-app</finalName>
     </build>
-
 </project>
