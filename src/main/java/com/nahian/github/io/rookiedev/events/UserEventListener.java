@@ -1,5 +1,6 @@
 package com.nahian.github.io.rookiedev.events;
 
+import com.nahian.github.io.rookiedev.facade.UserServiceFacade;
 import com.nahian.github.io.rookiedev.models.User;
 import com.nahian.github.io.rookiedev.services.UserService;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +18,7 @@ import javax.transaction.Transactional;
 @Log4j2
 public class UserEventListener  {
     private final UserService userService;
+    private final UserServiceFacade userServiceFacade;
 
     @Async
     @Transactional
@@ -25,5 +27,13 @@ public class UserEventListener  {
         User user = event.getUser();
         userService.deleteUser(user);
         log.warn("Delete user : " + user.getName());
+    }
+
+    @Async
+    @Transactional
+    @EventListener
+    public void handleNoteResetEvent(NoteRestEvent event) {
+        userServiceFacade.resetNote(event.userId);
+        log.warn("reset note : " + event.userId);
     }
 }

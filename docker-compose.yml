@@ -1,0 +1,19 @@
+version: "3.7"
+services:
+  rookie-app:
+    build: .
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - maria_db
+  maria_db:
+    image: "mariadb:10.6.8"
+    restart: always
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_DATABASE: rookiedev
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root

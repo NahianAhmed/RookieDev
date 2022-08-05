@@ -3,9 +3,12 @@ package com.nahian.github.io.rookiedev.controllers;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nahian.github.io.rookiedev.events.UserDeleteEvent;
+import com.nahian.github.io.rookiedev.events.NoteRestEvent;
 import com.nahian.github.io.rookiedev.exception.UserException;
+import com.nahian.github.io.rookiedev.models.Note;
 import com.nahian.github.io.rookiedev.models.User;
 import com.nahian.github.io.rookiedev.objects.SuggestedIdeas;
+import com.nahian.github.io.rookiedev.repositorys.NoteRepository;
 import com.nahian.github.io.rookiedev.services.UserService;
 import com.nahian.github.io.rookiedev.validators.UserValidator;
 import lombok.RequiredArgsConstructor;
@@ -28,6 +31,7 @@ public class HomeApiController {
     private final UserService userService;
     private final ApplicationEventPublisher publisher;
     private final UserValidator userValidator;
+    private final NoteRepository noteRepository;
 
     @GetMapping("/users")
     public List<User> getAllUser() {
@@ -78,5 +82,18 @@ public class HomeApiController {
         SuggestedIdeas ideas = objectMapper.readValue(jsonObject.toString(), SuggestedIdeas.class);
         log.info(jsonObject);
         log.info(ideas);
+    }
+
+    @PostMapping("/create-note")
+    public List<Note> createNote(@RequestBody Note note) {
+        userService.saveNote(note);
+        return noteRepository.findAll();
+    }
+
+    // Todo: only testing Transactional
+    @GetMapping("/reset-note/{userId}")
+    public List<Note> resetUser(@PathVariable Long userId) {
+        publisher.publishEvent(new NoteRestEvent(this, userId));
+        return noteRepository.findAll();
     }
 }
