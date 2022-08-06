@@ -2,7 +2,6 @@ package com.nahian.github.io.rookiedev.facade.impl;
 
 import com.nahian.github.io.rookiedev.facade.UserServiceFacade;
 import com.nahian.github.io.rookiedev.models.Note;
-import com.nahian.github.io.rookiedev.models.User;
 import com.nahian.github.io.rookiedev.services.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;

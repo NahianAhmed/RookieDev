@@ -1,6 +1,5 @@
 package com.nahian.github.io.rookiedev.events;
 
-import com.nahian.github.io.rookiedev.models.User;
 import lombok.Getter;
 import org.springframework.context.ApplicationEvent;
 

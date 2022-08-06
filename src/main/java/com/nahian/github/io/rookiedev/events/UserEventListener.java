@@ -29,7 +29,6 @@ public class UserEventListener  {
         log.warn("Delete user : " + user.getName());
     }
 
-    @Async
     @Transactional
     @EventListener
     public void handleNoteResetEvent(NoteRestEvent event) {
