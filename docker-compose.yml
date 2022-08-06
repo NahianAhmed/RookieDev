@@ -1,19 +1,25 @@
-version: "3.7"
+version: "3"
 services:
   rookie-app:
+    container_name: rookie-app
+    image: rookie-app
+    restart: always
     build: .
-    restart: always
     ports:
-      - "8080:8080"
+      - 8081:8080
     depends_on:
-      - maria_db
-  maria_db:
-    image: "mariadb:10.6.8"
-    restart: always
-    ports:
-      - "3307:3306"
+      - rookie-db
     environment:
-      MYSQL_DATABASE: rookiedev
+      MYSQL_HOST: rookie-db
       MYSQL_USER: root
       MYSQL_PASSWORD: root
+      MYSQL_PORT: 3306
+      MYSQL_DB: rookiedb
+  rookie-db:
+    container_name: rookie-db
+    image: "mariadb:10.6.8"
+    ports:
+      - 3307:3306
+    environment:
+      MARIADB_DATABASE: rookiedb
       MYSQL_ROOT_PASSWORD: root
