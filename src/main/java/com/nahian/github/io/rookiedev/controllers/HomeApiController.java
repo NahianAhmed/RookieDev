@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Objects;
@@ -95,5 +96,12 @@ public class HomeApiController {
     public List<Note> resetUser(@PathVariable Long userId) {
         publisher.publishEvent(new NoteRestEvent(this, userId));
         return noteRepository.findAll();
+    }
+
+    @GetMapping("/note/service")
+    public Note noteService() {
+        RestTemplate restTemplate = new RestTemplate();
+        String url = "http://rookie-service:8080/get/note";
+        return restTemplate.getForObject(url, Note.class);
     }
 }

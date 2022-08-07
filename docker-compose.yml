@@ -9,12 +9,20 @@ services:
       - 8081:8080
     depends_on:
       - rookie-db
+      - rookie-service
     environment:
       MYSQL_HOST: rookie-db
       MYSQL_USER: root
       MYSQL_PASSWORD: root
       MYSQL_PORT: 3306
       MYSQL_DB: rookiedb
+  rookie-service:
+    container_name: rookie-service
+    image: rookie-service
+    restart: always
+    build: ../rookie-service
+    ports:
+      - 8082:8080
   rookie-db:
     container_name: rookie-db
     image: "mariadb:10.6.8"
